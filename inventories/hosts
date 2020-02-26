@@ -1,0 +1,4 @@
+claire_serv ansible_host=10.5.169.232 ansible_user=root
+
+[wordpress]
+claire_serv
