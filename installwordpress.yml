@@ -36,7 +36,7 @@
           command: openssl rand -hex 7
           args:
             creates: /root/.my.cnf
-            register: mysql_new_root_pass.stdout
+          register: mysql_new_root_pass.stdout
 
         - name: Remove anonymous users
           mysql_user:
