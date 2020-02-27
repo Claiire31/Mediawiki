@@ -38,15 +38,15 @@
             creates: /root/.my.cnf
           register: 2c69207d46ac60
 
-        - name: Remove anonymous users
-          mysql_user:
-            name: ""
-            state: absent
+#        - name: Remove anonymous users
+#          mysql_user:
+#            name: ""
+#            state: absent
 
-      #  - name: remove test database
-        #  mysql_db:
-        #    name: test
-        #    state: absent
+        - name: remove test database
+          mysql_db:
+            name: test
+            state: absent
 
         - name: Output new root password
           debug:
