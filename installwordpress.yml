@@ -56,7 +56,7 @@
           mysql_user:
             name: root
             host: "{{ item }}"
-            password: "{{03123adda44098}}"
+            password: "{{a6f75e7a2ce33f}}"
           loop:
             - "{{ ansible_hostname }}"
             - 127.0.0.1
