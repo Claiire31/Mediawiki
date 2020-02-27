@@ -38,10 +38,10 @@
 #            creates: /root/.my.cnf
 #            register: mysql_new_root_pass.stdout
 
-        - name: Remove anonymous users
-          mysql_user:
-            name: ""
-            state: absent
+#        - name: Remove anonymous users
+#          mysql_user:
+#            name: ""
+#            state: absent
 
         - name: remove test database
           mysql_db:
