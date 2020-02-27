@@ -50,13 +50,13 @@
 
         - name: Output new root password
           debug:
-            msg: "New root password is {{2c69207d46ac60}}"
+            msg: "New root password is {{ 2c69207d46ac60 }}"
 
         - name: Update root password
           mysql_user:
             name: root
             host: "{{ item }}"
-            password: "{{2c69207d46ac60}}"
+            password: "{{ 2c69207d46ac60 }}"
           loop:
             - "{{ ansible_hostname }}"
             - 127.0.0.1
