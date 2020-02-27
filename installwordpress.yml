@@ -43,10 +43,10 @@
 #            name: ""
 #            state: absent
 
-        - name: remove test database
-          mysql_db:
-            name: test
-            state: absent
+#        - name: remove test database
+#          mysql_db:
+#            name: test
+#            state: absent
 
         - name: Output new root password
           debug:
