@@ -31,6 +31,12 @@
           loop:
             - mysql-server
             - python-mysqldb
+        - name: Create mysqld.cnf
+          template:
+            src: mysqld.cnf.j2
+            dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+          when: mysql_new_root_pass.changed
+          notify: restart mysql
 
         - name: Generate new root password
           command: openssl rand -hex 7
@@ -86,3 +92,10 @@
           template:
             src: templates/nginx/default.j2
             dest: /etc/nginx/sites-available/default
+          notify: restart nginx
+
+  handlers:
+        - name: restart nginx
+          service:
+            name: nginx
+            state: restarted
