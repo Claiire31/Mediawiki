@@ -94,7 +94,7 @@
             dest: /etc/nginx/sites-available/default
           notify: restart nginx
 
-  handlers:
+    handlers:
         - name: restart nginx
           service:
             name: nginx
