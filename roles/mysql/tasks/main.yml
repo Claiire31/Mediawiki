@@ -1,83 +1,83 @@
 ---
 
-  - name: Install mysql
-    package:
-      name: "{{item}}"
-      state: present
-    loop:
-      - mysql-server
-      - python-mysqldb
+- name: Install mysql
+  package:
+    name: "{{item}}"
+    state: present
+  loop:
+    - mysql-server
+    - python-mysqldb
 
-  - name: Create mysqld.cnf
-    template:
-      src: mysqld.cnf.j2
-      dest: /etc/mysql/mysql.conf.d/mysqld.cnf
-    notify: restart mysql
+- name: Create mysqld.cnf
+  template:
+    src: mysqld.cnf.j2
+    dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+  notify: restart mysql
 
-  - name: Generate new root password
-    command: openssl rand -hex 7
-    args:
-      creates: /root/.my.cnf
-    register: mysql_new_root_pass
+- name: Generate new root password
+  command: openssl rand -hex 7
+  args:
+    creates: /root/.my.cnf
+  register: mysql_new_root_pass
 
-  - name: Remove anonymous users
-    mysql_user:
-      name: ""
-      state: absent
-    when: mysql_new_root_pass.changed
+- name: Remove anonymous users
+  mysql_user:
+    name: ""
+    state: absent
+  when: mysql_new_root_pass.changed
 
-  - name: remove test database
-    mysql_db:
-      name: test
-      state: absent
-    when: mysql_new_root_pass.changed
+- name: remove test database
+  mysql_db:
+    name: test
+    state: absent
+  when: mysql_new_root_pass.changed
 
-  - name: Output new root password
-    debug:
-      msg: "New root password is {{mysql_new_root_pass.stdout}}"
-    when: mysql_new_root_pass.changed
+- name: Output new root password
+  debug:
+    msg: "New root password is {{mysql_new_root_pass.stdout}}"
+  when: mysql_new_root_pass.changed
 
-  - name: Update root password
-    mysql_user:
-      name: root
-      host: "{{ item }}"
-      password: "{{mysql_new_root_pass.stdout}}"
-    loop:
-      - "{{ ansible_hostname }}"
-      - 127.0.0.1
-      - ::1
-      - localhost
-  - name: Create my.cnf
-    template:
-      src: my.cnf.j2
-      dest: /root/.my.cnf
+- name: Update root password
+  mysql_user:
+    name: root
+    host: "{{ item }}"
+    password: "{{mysql_new_root_pass.stdout}}"
+  loop:
+    - "{{ ansible_hostname }}"
+    - 127.0.0.1
+    - ::1
+    - localhost
+- name: Create my.cnf
+  template:
+    src: my.cnf.j2
+    dest: /root/.my.cnf
 
-  - name: Create WordPress MySQL database
-    mysql_db:
-      name: wordpress
-      state: present
+- name: Create WordPress MySQL database
+  mysql_db:
+    name: wordpress
+    state: present
 
-  - name: Create WordPress MySQL user
-    mysql_user:
-      name: wordpress
-      host: localhost
-      password: bananas
-      priv: wordpress.*:ALL
+- name: Create WordPress MySQL user
+  mysql_user:
+    name: wordpress
+    host: localhost
+    password: bananas
+    priv: wordpress.*:ALL
 
-  - name: Does the database exist?
-    command: mysql -u root wordpress -e "SELECT ID FROM wordpress.wp_users LIMIT 1;"
-    register: db_exist
-    ignore_errors: true
+- name: Does the database exist?
+  command: mysql -u root wordpress -e "SELECT ID FROM wordpress.wp_users LIMIT 1;"
+  register: db_exist
+  ignore_errors: true
 
-  - name: Copy WordPress DB
-    copy:
-      src: wp-database.sql
-      dest: /tmp/wp-database.sql
-    when: db_exist.rc > 0
+- name: Copy WordPress DB
+  copy:
+    src: wp-database.sql
+    dest: /tmp/wp-database.sql
+  when: db_exist.rc > 0
 
-  - name: Import WordPress DB
-    mysql_db:
-      target: /tmp/wp-database.sql
-      state: import
-      name: wordpress
-    when: db_exist.rc > 0
+- name: Import WordPress DB
+  mysql_db:
+    target: /tmp/wp-database.sql
+    state: import
+    name: wordpress
+  when: db_exist.rc > 0
