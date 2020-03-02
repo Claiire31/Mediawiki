@@ -1,4 +1,5 @@
 ---
 
 mysql_user: wordpress
-mysql_dbname: wordpress 
+mysql_dbname: wordpress
+mysql_passwd: bananas
