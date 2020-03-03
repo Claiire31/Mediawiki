@@ -1,0 +1,61 @@
+---
+
+- name: Create directory livraison v1
+  file:
+    path: /appli/projects/LIVR/01.00.00
+    state: directory
+    mode: '0755'
+
+- name: Create directory livraison v2
+  file:
+    path: /appli/projects/LIVR/01.01.00
+    state: directory
+    mode: '0755'
+
+- name: Create directory Apache
+  file:
+    path: /appli/projects/wikidevops/apache
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: '0755'
+    recurse: yes
+
+- name: Create directory MySQL
+  file:
+    path: /appli/projects/wikidevops/mysql
+    state: directory
+    owner: mysql
+    group: mysql
+    mode: '0755'
+    recurse: yes
+
+  - name: Create directory log Apache
+    file:
+      path: /var/projects/wikidevops/log/apache
+      state: directory
+      owner: www-data
+      group: www-data
+      mode: '0755'
+      recurse: yes
+
+- name: Create directory log MySQL
+  file:
+    path: /var/projects/wikidevops/log/mysql
+    state: directory
+    owner: mysql
+    group: mysql
+    mode: '0755'
+    recurse: yes
+
+- name: Create directory conf machine
+  file:
+    path: /etc/conf_machine
+    state: directory
+
+- name: Fichier de signature
+  file:
+    path: /etc/conf_machine/md3_mediawiki_1.24.2_linux_ubu18
+    state: touch
+    mode: '0644'
+    

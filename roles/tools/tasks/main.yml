@@ -1,7 +1,13 @@
 ---
 
-- name: Install required tools
-  apt:
-    name:
-      - unzip
-    state: present
+- name: Unarchive md3_01.00.00_data
+  unarchive:
+    src: "{{mediawiki_LIVR1}}"/md3_01.00.00_data
+    dest: "{{mediawiki_apache}}"
+    remote_src: yes
+
+- name: Unarchive dump_image.tar.gz
+  unarchive:
+    src: "{{mediawiki_LIVR1}}"/dump_image.tar.gz
+    dest: "{{mediawiki_apache}}"/images
+    remote_src: yes
