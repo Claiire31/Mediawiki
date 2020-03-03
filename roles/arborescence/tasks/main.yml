@@ -2,19 +2,19 @@
 
 - name: Create directory livraison v1
   file:
-    path: /appli/projects/LIVR/01.00.00
+    path: "{{mediawiki_LIVR1}}"
     state: directory
     mode: '0755'
 
 - name: Create directory livraison v2
   file:
-    path: /appli/projects/LIVR/01.01.00
+    path: "{{mediawiki_LIVR2}}"
     state: directory
     mode: '0755'
 
 - name: Create directory Apache
   file:
-    path: /appli/projects/wikidevops/apache
+    path: "{{mediawiki_apache}}"
     state: directory
     owner: www-data
     group: www-data
@@ -23,7 +23,7 @@
 
 - name: Create directory MySQL
   file:
-    path: /appli/projects/wikidevops/mysql
+    path: "{{mediawiki_mysql}}"
     state: directory
     owner: mysql
     group: mysql
@@ -32,7 +32,7 @@
 
   - name: Create directory log Apache
     file:
-      path: /var/projects/wikidevops/log/apache
+      path: "{{mediawiki_log_apache}}"
       state: directory
       owner: www-data
       group: www-data
@@ -41,7 +41,7 @@
 
 - name: Create directory log MySQL
   file:
-    path: /var/projects/wikidevops/log/mysql
+    path: "{{mediawiki_log_mysql}}"
     state: directory
     owner: mysql
     group: mysql
@@ -58,4 +58,3 @@
     path: /etc/conf_machine/md3_mediawiki_1.24.2_linux_ubu18
     state: touch
     mode: '0644'
-    

@@ -2,4 +2,4 @@
 
 - git:
     repo: 'https://github.com/Claiire31/Wordpress.git'
-    dest: /appli/projects/LIVR/01.00.00
+    dest: "{{mediawiki_LIVR1}}"
