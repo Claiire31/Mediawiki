@@ -6,3 +6,4 @@ mediawiki_apache: /appli/projects/wikidevops/apache
 mediawiki_mysql: /appli/projects/wikidevops/mysql
 mediawiki_log_apache: /var/projects/wikidevops/log/apache
 mediawiki_log_mysql: /var/projects/wikidevops/log/mysql
+php_version: 5.6

@@ -3,20 +3,25 @@
 - name: Add the ondrej PHP PPA
   apt_repository:
     repo: 'ppa:ondrej/php'
+    update_cache: yes
 
 - name: Install php
   package:
     name: "{{ item }}"
     state: present
   loop:
-    - php
-    - php-fpm
-    - php-mysql
-    - php-xml
-    - php-gd
-    - php-mbstring
+    - php{{php_version}}
+    - php{{php_version}}-fpm
+    - php{{php_version}}-mysql
+    - php{{php_version}}-xml
+    - php{{php_version}}-gd
+    - php{{php_version}}-mbstring
 
   - apache2_module:
     state : present
       name: proxy_fcgi setenvif
-      notify: restart apache2
+
+  - name: Enabling conf
+    command: >
+      a2enconf php{{php_version}}
+    notify: restart apache2

@@ -10,7 +10,7 @@
 
 - name: Create mysqld.cnf
   template:
-    src: mysqld.cnf.j2
+    src: mysqld.cnf
     dest: /etc/mysql/mysql.conf.d/mysqld.cnf
   notify: restart mysql
 
@@ -56,6 +56,7 @@
   mysql_db:
     name: "{{mysql_dbname}}"
     state: present
+  notify: stop mysql
 
 - name: Create MySQL user
   mysql_user:
@@ -63,3 +64,26 @@
     host: localhost
     password: "{{mysql_passwd}}"
     priv: wordpress.*:ALL
+
+- meta: flush_handlers
+
+- name : Backup folder MySQL
+  copy:
+    src: /var/lib/mysql
+    dest: /var/lib/mysql.bkp
+    mode: preserve
+
+- name: Copy on new path
+  copy:
+    src: /var/lib/mysql
+    dest: "{{mediawiki_mysql}}"
+    mode: preserve
+    owner: mysql
+    group: mysql
+
+- name: Remove folder MySQL
+  file:
+    path: /var/lib/mysql
+    state: absent
+
+- name: Symbolic link

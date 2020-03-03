@@ -1,0 +1,6 @@
+---
+
+-name: Fichier de site
+  copy:
+  src: /files/mediawiki.conf
+  dest: /etc/apache2/sites-available/
