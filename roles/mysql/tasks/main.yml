@@ -18,7 +18,6 @@
     recurse: yes
   loop:
     - "{{mediawiki_log_mysql}}"
-    - "{{mediawiki_mysql}}"
 
 - name: Create mysqld.cnf
   copy:
@@ -31,6 +30,7 @@
     dest: /var/lib/mysql.bkp
     mode: preserve
     remote_src: yes
+  when: result.stat.exists == true
 
 - name: Copy on new path
   copy:
@@ -40,6 +40,7 @@
     owner: mysql
     group: mysql
     remote_src: yes
+  when: result.stat.exists == true
 
 - name: Remove folder MySQL
   file:
