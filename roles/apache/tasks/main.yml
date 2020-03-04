@@ -5,11 +5,10 @@
     name: apache2
     state: present
 
-- name: Start apache2
+- name: Stop apache2
   service:
     name: apache2
-    state: started
-    enabled: yes
+    state: stopped
 
 - name: Change UID www-data
   user:
@@ -20,3 +19,9 @@
   group:
     name: www-data
     gid: 1100
+
+- name: Start apache2
+  service:
+    name: apache2
+    state: started
+    enabled: yes
