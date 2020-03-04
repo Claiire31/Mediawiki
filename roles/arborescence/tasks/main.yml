@@ -2,54 +2,25 @@
 
 - name: Create directory livraison v1
   file:
-    path: "{{mediawiki_LIVR1}}"
+    path: "{{item}}"
     state: directory
     mode: '0755'
     recurse: yes
+  loop:
+    - "{{mediawiki_LIVR1}}"
+    - "{{mediawiki_LIVR2}}"
 
-- name: Create directory livraison v2
+- name: Create directory and directory log Apache
   file:
-    path: "{{mediawiki_LIVR2}}"
-    state: directory
-    mode: '0755'
-    recurse: yes
-
-- name: Create directory Apache
-  file:
-    path: "{{mediawiki_apache}}"
+    path: "{{item}}"
     state: directory
     owner: www-data
     group: www-data
     mode: '0755'
     recurse: yes
-    
-
-- name: Create directory MySQL
-  file:
-    path: "{{mediawiki_mysql}}"
-    state: directory
-    owner: mysql
-    group: mysql
-    mode: '0755'
-    recurse: yes
-
-- name: Create directory log Apache
-  file:
-      path: "{{mediawiki_log_apache}}"
-      state: directory
-      owner: www-data
-      group: www-data
-      mode: '0755'
-      recurse: yes
-
-- name: Create directory log MySQL
-  file:
-    path: "{{mediawiki_log_mysql}}"
-    state: directory
-    owner: mysql
-    group: mysql
-    mode: '0755'
-    recurse: yes
+  loop:
+    - "{{mediawiki_apache}}"
+    - "{{mediawiki_log_apache}}"
 
 - name: Create directory conf machine
   file:

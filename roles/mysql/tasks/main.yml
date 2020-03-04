@@ -8,6 +8,18 @@
     - mysql-server
     - python-mysqldb
 
+- name: Create directory and directory log MySQL
+  file:
+    path: "{{item}}"
+    state: directory
+    owner: mysql
+    group: mysql
+    mode: '0755'
+    recurse: yes
+  loop:
+    - "{{mediawiki_log_mysql}}"
+    - "{{mediawiki_mysql}}"
+
 - name: Create mysqld.cnf
   template:
     src: mysqld.cnf
