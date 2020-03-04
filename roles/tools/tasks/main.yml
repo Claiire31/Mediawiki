@@ -2,7 +2,7 @@
 
 - name: Unarchive md3_01.00.00_data
   unarchive:
-    src: Package_1/md3_01.00.00_data.tar.gz
+    src: Package_1/md3_01.00.00_data.tar
     dest: "{{mediawiki_apache}}"
 
 - name: Unarchive dump_image.tar.gz
