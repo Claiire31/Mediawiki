@@ -1,4 +1,2 @@
-ubuntusrv ansible_host=192.168.56.104 ansible_user=webadm ansible_become=yes
-
 [mediawiki]
-ubuntusrv
+ubuntusrv ansible_host=192.168.56.104 ansible_user=webadm ansible_become=yes
