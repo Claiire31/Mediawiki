@@ -54,6 +54,7 @@
     owner: mysql
     group: mysql
     state: link
+    force: yes
 
 #apparmor
 - name: Copy file apparmor
