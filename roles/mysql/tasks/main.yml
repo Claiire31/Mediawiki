@@ -34,13 +34,12 @@
 
 - name: Copy on new path
   copy:
-    src: /var/lib/mysql
+    src: /var/lib/mysql.bkp
     dest: "{{mediawiki_mysql}}"
     mode: preserve
     owner: mysql
     group: mysql
     remote_src: yes
-  when: false
 
 - name: Remove folder MySQL
   file:
