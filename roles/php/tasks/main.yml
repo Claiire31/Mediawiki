@@ -24,4 +24,8 @@
   - name: Enabling conf
     command: >
       a2enconf php{{php_version}}
-    notify: restart apache2
+
+- name: Restart Apache2
+  service:
+    name: apache2
+    state: restarted

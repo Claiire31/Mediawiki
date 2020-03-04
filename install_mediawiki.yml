@@ -6,3 +6,5 @@
     - import_git
     - tools
     - apache
+    - mysql
+    - mediawiki

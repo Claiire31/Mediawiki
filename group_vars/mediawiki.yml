@@ -7,3 +7,6 @@ mediawiki_mysql: /appli/projects/wikidevops/mysql
 mediawiki_log_apache: /var/projects/wikidevops/log/apache
 mediawiki_log_mysql: /var/projects/wikidevops/log/mysql
 php_version: 5.6
+mysql_dbname: mediawiki_db
+mysql_user: mediawiki_admin
+mysql_passwd: mediawiki_passwd
