@@ -31,7 +31,7 @@
     recurse: yes
 
 - name: Create directory log Apache
-    file:
+  file:
       path: "{{mediawiki_log_apache}}"
       state: directory
       owner: www-data
