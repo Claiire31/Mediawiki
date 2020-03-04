@@ -30,7 +30,7 @@
     mode: '0755'
     recurse: yes
 
-  - name: Create directory log Apache
+- name: Create directory log Apache
     file:
       path: "{{mediawiki_log_apache}}"
       state: directory
