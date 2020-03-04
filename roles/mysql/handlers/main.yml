@@ -9,3 +9,8 @@
   service:
     name: mysql
     state: stopped
+
+- name: reload apparmor
+  service:
+    name: apparmor
+    state: reloaded

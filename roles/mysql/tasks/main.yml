@@ -21,10 +21,9 @@
     - "{{mediawiki_mysql}}"
 
 - name: Create mysqld.cnf
-  template:
+  copy:
     src: mysqld.cnf
     dest: /etc/mysql/mysql.conf.d/mysqld.cnf
-  notify: restart mysql
 
 - name: Generate new root password
   command: openssl rand -hex 7
@@ -59,6 +58,7 @@
     - 127.0.0.1
     - ::1
     - localhost
+
 - name: Create my.cnf
   template:
     src: my.cnf.j2
@@ -111,18 +111,20 @@
   copy:
     src: files/usr.sbin.mysqld
     dest: /etc/apparmor.d/usr.sbin.mysqld
+  notify: reload apparmor
 
 - name: Add alias Apparmor
   copy:
     src: files/alias
     dest: /etc/apparmor.d/tunables/alias
+  notify: reload apparmor
 
-- name: Reload configuration
-  service:
-    name: apparmor
-    state: reloaded
-
-- name:
+- name: Start mysql
   service:
     name: mysql
-    state: restarted
+    state: started
+
+- name: Enable MySQL
+  service:
+    name: mysql
+    enabled: yes
