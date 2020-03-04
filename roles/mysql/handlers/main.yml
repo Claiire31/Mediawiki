@@ -5,7 +5,7 @@
     name: mysql
     state: restarted
 
-  name: stop mysql
+- name: stop mysql
   service:
     name: mysql
     state: stopped
