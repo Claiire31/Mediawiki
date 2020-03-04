@@ -20,10 +20,10 @@
   command: php "{{mediawiki_apache}}/md3_01.00.00_data/maintenance/install.php" --dbuser=mediawiki_admin --dbpass=mediawiki_passwd --dbname=mediawiki_db --dbserver=localhost --dbtype=mysql --scriptpath= --confpath=/appli/projects/wikidevops/apache/md3-01.00.00_data  --lang=fr --pass=password wikidevops admin
 
 - name: Import Donnees.xml
-  command: php {{mediawiki_apache}}/md3_01.00.00_data/maintenance/importDump.php" "{{mediawiki_LIVR1}}/Donnees.xml"
+  command: php "{{mediawiki_apache}}/md3_01.00.00_data/maintenance/importDump.php" "{{mediawiki_LIVR1}}/Donnees.xml"
 
 - name: Rebuild recent changes
-  command: php {{mediawiki_apache}}/md3_01.00.00_data/maintenance/rebuildrecentchanges.php"
+  command: php "{{mediawiki_apache}}/md3_01.00.00_data/maintenance/rebuildrecentchanges.php"
 
 - name: Import images
   command: php "{{mediawiki_apache}}/md3_01.00.00_data/maintenance/importImages.php" {{mediawiki_apache}}/md3_01.00.00_data/images"
