@@ -2,8 +2,8 @@
 
 - name: Fichier de site
   copy:
-  src: /files/mediawiki.conf
-  dest: /etc/apache2/sites-available/
+    src: /files/mediawiki.conf
+    dest: /etc/apache2/sites-available/
 
 - name: Disable default conf
   command: a2dissite 000-default
