@@ -30,7 +30,7 @@
     dest: /var/lib/mysql.bkp
     mode: preserve
     remote_src: yes
-  when: true
+  when: false
 
 - name: Copy on new path
   copy:
@@ -40,7 +40,7 @@
     owner: mysql
     group: mysql
     remote_src: yes
-  when: true
+  when: false
 
 - name: Remove folder MySQL
   file:
