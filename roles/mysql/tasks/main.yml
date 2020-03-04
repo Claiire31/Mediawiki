@@ -20,6 +20,11 @@
     - "{{mediawiki_log_mysql}}"
     - "{{mediawiki_mysql}}"
 
+- name: Create mysqld.cnf
+  copy:
+    src: mysqld.cnf
+    dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+
 - name: Generate new root password
   command: openssl rand -hex 7
   args:
@@ -100,11 +105,6 @@
     owner: mysql
     group: mysql
     state: link
-
-- name: Create mysqld.cnf
-  copy:
-    src: mysqld.cnf
-    dest: /etc/mysql/mysql.conf.d/mysqld.cnf
 
 #apparmor
 - name: Copy file apparmor
