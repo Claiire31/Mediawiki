@@ -1,4 +1,4 @@
-MachineCible ansible_host=192.168.56.102 ansible_user=devops
+ubuntusrv ansible_host=192.168.56.104 ansible_user=webadm
 
-[wordpress]
-MachineCible
+[mediawiki]
+ubuntusrv
