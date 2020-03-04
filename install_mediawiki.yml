@@ -3,7 +3,6 @@
 - hosts: mediawiki
   roles:
     - arborescence
-    - import_git
     - tools
     - apache
     - mysql
