@@ -30,6 +30,7 @@
     src: /var/lib/mysql
     dest: /var/lib/mysql.bkp
     mode: preserve
+    become: true
 
 - name: Copy on new path
   copy:
