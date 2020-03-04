@@ -26,4 +26,4 @@
   command: php "{{mediawiki_apache}}/md3_01.00.00_data/maintenance/rebuildrecentchanges.php"
 
 - name: Import images
-  command: php "{{mediawiki_apache}}/md3_01.00.00_data/maintenance/importImages.php" {{mediawiki_apache}}/md3_01.00.00_data/images"
+  command: php "{{mediawiki_apache}}/md3_01.00.00_data/maintenance/importImages.php" "{{mediawiki_apache}}/md3_01.00.00_data/images"
