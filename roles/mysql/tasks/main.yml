@@ -35,7 +35,7 @@
 - name: Copy on new path
   copy:
     src: /var/lib/mysql
-    dest: "{{mediawiki_mysql}}"
+    dest: /appli/projects/wikidevops
     mode: preserve
     owner: mysql
     group: mysql
