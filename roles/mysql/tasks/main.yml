@@ -49,8 +49,8 @@
 
 - name: Symbolic link
   file:
-    src: /var/lib/mysql
-    dest: "{{mediawiki_mysql}}"
+    src: "{{mediawiki_mysql}}"
+    dest: /var/lib/mysql
     owner: mysql
     group: mysql
     state: link
