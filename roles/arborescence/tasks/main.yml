@@ -5,12 +5,14 @@
     path: "{{mediawiki_LIVR1}}"
     state: directory
     mode: '0755'
+    recurse: yes
 
 - name: Create directory livraison v2
   file:
     path: "{{mediawiki_LIVR2}}"
     state: directory
     mode: '0755'
+    recurse: yes
 
 - name: Create directory Apache
   file:
@@ -20,6 +22,7 @@
     group: www-data
     mode: '0755'
     recurse: yes
+    
 
 - name: Create directory MySQL
   file:
