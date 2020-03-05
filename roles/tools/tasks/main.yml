@@ -4,8 +4,14 @@
   unarchive:
     src: Package_1/md3_01.00.00_data.tar
     dest: "{{mediawiki_apache}}"
+    mode: 0755
+    owner: www-data
+    group: www-data
 
 - name: Unarchive dump_image.tar.gz
   unarchive:
     src: Package_1/dump_image.tar.gz
     dest: "{{mediawiki_apache}}/md3_01.00.00_data/images"
+    mode: 0755
+    owner: www-data
+    group: www-data
