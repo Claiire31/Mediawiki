@@ -18,7 +18,7 @@
     - php"{{php_version}}"-mbstring
 
 - apache2_module:
-  state : present
+    state : present
     name: proxy_fcgi setenvif
 
 - name: Enabling conf
