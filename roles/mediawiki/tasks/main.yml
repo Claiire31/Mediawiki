@@ -16,6 +16,11 @@
     name: apache2
     state: reloaded
 
+- name: Copy Donnees.xml
+  copy:
+    src: Package_1/Donnees.xml
+    dest: "{{mediawiki_LIVR1}}"
+
 - name: Install Mediawiki
   command: php "{{mediawiki_apache}}/md3_01.00.00_data/maintenance/install.php" --dbuser=mediawiki_admin --dbpass=mediawiki_passwd --dbname=mediawiki_db --dbserver=localhost --dbtype=mysql --scriptpath= --confpath=/appli/projects/wikidevops/apache/md3_01.00.00_data  --lang=fr --pass=password wikidevops admin
 
