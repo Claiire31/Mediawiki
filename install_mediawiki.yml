@@ -3,7 +3,6 @@
 - hosts: mediawiki
   roles:
     - { role: arborescence, tags: arborescence }
-    - { role: tools, tags: tools }
     - { role: php, tags: php }
     - { role: apache, tags: apache }
     - { role: mysql, tags: mysql }
