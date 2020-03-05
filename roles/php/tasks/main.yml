@@ -10,19 +10,19 @@
     name: "{{ item }}"
     state: present
   loop:
-    - php"{{php_version}}"
-    - php"{{php_version}}"-fpm
-    - php"{{php_version}}"-mysql
-    - php"{{php_version}}"-xml
-    - php"{{php_version}}"-gd
-    - php"{{php_version}}"-mbstring
+    - "php{{php_version}}"
+    - "php{{php_version}}-fpm"
+    - "php{{php_version}}-mysql"
+    - "php{{php_version}}-xml"
+    - "php{{php_version}}-gd"
+    - "php{{php_version}}-mbstring"
 
 - apache2_module:
     state : present
     name: proxy_fcgi setenvif
 
 - name: Enabling conf
-  command: a2enconf php"{{php_version}}"
+  command: a2enconf "php{{php_version}}"
 
 - name: Restart Apache2
   service:
