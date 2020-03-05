@@ -2,9 +2,9 @@
 
 - hosts: mediawiki
   roles:
-    - arborescence
-    - tools
-    - php
-    - apache
-    - mysql
-    - mediawiki
+    - { role: arborescence, tags: arborescence }
+    - { role: tools, tags: tools }
+    - { role: php, tags: php }
+    - { role: apache, tags: apache }
+    - { role: mysql, tags: mysql }
+    - { role: mediawiki tags: mediawiki }

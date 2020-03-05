@@ -75,7 +75,7 @@
     name: "{{mysql_user}}"
     host: localhost
     password: "{{mysql_passwd}}"
-    priv: wordpress.*:ALL
+    priv: "{{mysql_dbname}}.*:ALL"
 
 
 
