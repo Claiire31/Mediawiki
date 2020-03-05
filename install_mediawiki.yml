@@ -4,6 +4,7 @@
   roles:
     - arborescence
     - tools
+    - php
     - apache
     - mysql
     - mediawiki
