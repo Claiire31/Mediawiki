@@ -15,4 +15,4 @@
     mode: 0755
     owner: www-data
     group: www-data
-    tags: images
+  tags: images
