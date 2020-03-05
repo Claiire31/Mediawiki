@@ -8,6 +8,11 @@
     - mysql-server
     - python-mysqldb
 
+- name: Create mysqld.cnf
+  copy:
+    src: mysqld.cnf
+    dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+
 - name: Start mysql
   service:
     name: mysql
