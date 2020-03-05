@@ -2,7 +2,7 @@
 
 - name: Fichier de site
   copy:
-    src: /files/mediawiki.conf
+    src: mediawiki.conf
     dest: /etc/apache2/sites-available/
 
 - name: Disable default conf
