@@ -1,6 +1,6 @@
 ---
 
-- name: restart Apache
+- name: Restart Apache
   service:
     name: apache2
     state: restarted

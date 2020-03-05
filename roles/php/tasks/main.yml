@@ -19,12 +19,12 @@
 
 - apache2_module:
     state : present
-    name: proxy_fcgi setenvif
+    name: "{{item}}"
+  loop:
+    - proxy_fcgi
+    - setenvif
+  notify: Restart apache2
 
 - name: Enabling conf
   command: a2enconf "php{{php_version}}"
-
-- name: Restart Apache2
-  service:
-    name: apache2
-    state: restarted
+  notify: Restart apache2
