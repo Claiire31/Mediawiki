@@ -7,4 +7,4 @@
     - { role: php, tags: php }
     - { role: apache, tags: apache }
     - { role: mysql, tags: mysql }
-    - { role: mediawiki tags: mediawiki }
+    - { role: mediawiki, tags: mediawiki }
