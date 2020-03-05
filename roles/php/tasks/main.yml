@@ -17,12 +17,12 @@
     - php"{{php_version}}"-gd
     - php"{{php_version}}"-mbstring
 
-  - apache2_module:
-    state : present
-      name: proxy_fcgi setenvif
+- apache2_module:
+  state : present
+    name: proxy_fcgi setenvif
 
-  - name: Enabling conf
-    command: a2enconf php"{{php_version}}"
+- name: Enabling conf
+  command: a2enconf php"{{php_version}}"
 
 - name: Restart Apache2
   service:
