@@ -24,9 +24,9 @@
     - proxy_fcgi
     - setenvif
   notify: Restart apache2
-  
+
 - meta: flush_handlers
 
 - name: Enabling conf
-  command: a2enconf "php{{php_version}}"
+  command: a2enconf "php{{php_version}}-fpm.conf"
   notify: Restart apache2
