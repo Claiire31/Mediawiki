@@ -23,14 +23,14 @@
     remote_src: yes
   when: false
 
-- name: Synchronise directory
-  synchronize:
+- name: Copy on new path
+  copy:
     src: /var/lib/mysql
-    dest: /appli/projects/wikidevops/
-    perms: yes
-    owner: yes
-    group: yes
-    mode: pull
+    dest: /appli/projects/wikidevops
+    mode: preserve
+    owner: mysql
+    group: mysql
+    remote_src: yes
 
 - name: Remove folder MySQL
   file:
