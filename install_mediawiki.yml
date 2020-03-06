@@ -6,5 +6,4 @@
     - { role: php, tags: php }
     - { role: apache, tags: apache }
     - { role: mysql, tags: mysql }
-    - { role: data_log, tags: data_log }
     - { role: mediawiki, tags: mediawiki }
