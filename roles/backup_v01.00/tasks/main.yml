@@ -21,6 +21,7 @@
   copy:
     src: "{{mediawiki_apache}}/md3_01.00.00_data/Localsettings.php"
     dest: "{{data_wiki}}"
+    remote_src: yes
 
 - name: Archive mediawiki01.00.00
   archive:
