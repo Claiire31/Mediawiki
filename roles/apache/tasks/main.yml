@@ -5,10 +5,13 @@
     name: apache2
     state: present
 
-- name: Stop apache2
+- name: Stop apache2 & php-fpm
   service:
-    name: apache2
+    name: "{{item}}"
     state: stopped
+  loop:
+    - apache2
+    - "{{php_versionv1}}-fpm"
 
 - name: Change UID www-data
   user:
@@ -20,8 +23,10 @@
     name: www-data
     gid: 1100
 
-- name: Start apache2
+- name: Start apache2 & php-fpm
   service:
-    name: apache2
+    name: "{{item}}"
     state: started
-    enabled: yes
+  loop:
+    - apache2
+    - "{{php_versionv1}}-fpm"
