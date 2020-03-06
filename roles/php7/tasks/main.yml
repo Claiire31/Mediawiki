@@ -1,0 +1,36 @@
+---
+
+- name: Install PHP7.4
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "php{{php_versionv2}}"
+    - "php{{php_versionv2}}-fpm"
+    - "php{{php_versionv2}}-mysql"
+    - "php{{php_versionv2}}-xml"
+    - "php{{php_versionv2}}-gd"
+    - "php{{php_versionv2}}-mbstring"
+
+- apache2_module:
+    state : present
+    name: "{{item}}"
+  loop:
+    - proxy_fcgi
+    - setenvif
+  notify: Restart apache2
+
+- meta: flush_handlers
+
+- name: Remove old version
+  apt:
+    name: "{{ item }}"
+    state: absent
+    purge: yes
+  loop:
+    - "php{{php_versionv1}}"
+    - "php{{php_versionv1}}-fpm"
+    - "php{{php_versionv1}}-mysql"
+    - "php{{php_versionv1}}-xml"
+    - "php{{php_versionv1}}-gd"
+    - "php{{php_versionv1}}-mbstring"

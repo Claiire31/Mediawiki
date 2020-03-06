@@ -1,9 +1,43 @@
 ---
 
+- name: Copy package_2 on LIVR
+  copy:
+    src: Package_2
+    dest: "{{LIVR2}}"
+
 - name: Unarchive md3_01.01.00_data
   unarchive:
-    src: Package_2/md3_01.00.00_data.tar.gz
+    src: "{{LIVR2}}/md3_01.00.00_data.tar.gz"
     dest: "{{mediawiki_apache}}"
     mode: 0755
     owner: www-data
     group: www-data
+
+- name: Unarchive Theme-REL1_34-b71d3ac
+  unarchive:
+    src: "{{LIVR2}}/Theme-REL1_34-b71d3ac.tar.gz"
+    dest: "{{mediawiki_apache}}/md3_01.01.00_data/extensions/"
+    mode: 0755
+    owner: www-data
+    group: www-data
+
+- name: Unarchive LoGo.tar.gz
+  unarchive:
+    src: "{{LIVR2}}/LoGo.tar.gz"
+    dest: "{{mediawiki_apache}}/md3_01.01.00_data/resources/assets/"
+    mode: 0755
+    owner: www-data
+    group: www-data
+
+- name: Import Localsettings.php
+  copy:
+    src: Localsettings.php
+    dest: "{{mediawiki_apache}}/md3_01.01.00_data"
+
+- name: Update.php
+  command: php "{{mediawiki_apache}}/md3_01.01.00_data/maintenance/update.php" 
+
+- name: Reload configuration apache
+  service:
+    name: apache2
+    state: reloaded

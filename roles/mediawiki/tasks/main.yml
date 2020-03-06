@@ -21,9 +21,14 @@
     src: Package_1/Donnees.xml
     dest: "{{mediawiki_LIVR1}}"
 
+- name: Copy package_1 on LIVR
+  copy:
+    src: Package_1
+    dest: "{{LIVR1}}"
+
 - name: Unarchive md3_01.00.00_data
   unarchive:
-    src: Package_1/md3_01.00.00_data.tar
+    src: "{{LIVR1}}/md3_01.00.00_data.tar"
     dest: "{{mediawiki_apache}}"
     mode: 0755
     owner: www-data
