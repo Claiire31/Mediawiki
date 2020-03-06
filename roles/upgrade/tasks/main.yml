@@ -5,13 +5,13 @@
     src: "Package_2/{{item}}"
     dest: "{{mediawiki_LIVR2}}"
   loop:
-    - md3_01.00.00_data.tar.gz
+    - md3_01.01.00_data.tar.gz
     - Theme-REL1_34-b71d3ac.tar.gz
     - LoGo.tar.gz
 
 - name: Unarchive md3_01.01.00_data
   unarchive:
-    src: "{{mediawiki_LIVR2}}/md3_01.00.00_data.tar.gz"
+    src: "{{mediawiki_LIVR2}}/md3_01.01.00_data.tar.gz"
     dest: "{{mediawiki_apache}}"
     mode: 0755
     owner: www-data
