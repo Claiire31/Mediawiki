@@ -1,0 +1,22 @@
+---
+
+- name: Dump database
+  mysql_db:
+    state: dump
+    name:
+      - mediawiki_db
+    target: /home/mediawiki/01.00.00/backup.sql.gz
+
+- name: Dump
+  command: php "{{mediawiki_apache}}/md3_01.00.00_data/maintenance/dumpBackup.php" --full >  /home/mediawiki/01.00.00/wikidoneesv1.xml
+
+- name: Copy Localsettings.php
+  copy:
+    src: "{{mediawiki_apache}}/md3_01.00.00_data/Localsettings.php"
+    dest: /home/mediawiki/01.00.00/
+
+- name: Archive images & mediawiki01.00.00
+  archive:
+    src: "{{mediawiki_apache}}/md3_01.00.00_data/images"
+    dest: /home/mediawiki/01.00.00/
+    format: gz

@@ -1,0 +1,7 @@
+---
+
+- hosts: mediawiki
+  roles:
+    - backup_v01.00
+    - php
+    

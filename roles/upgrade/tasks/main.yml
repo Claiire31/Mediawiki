@@ -1,0 +1,9 @@
+---
+
+- name: Unarchive md3_01.01.00_data
+  unarchive:
+    src: Package_2/md3_01.00.00_data.tar.gz
+    dest: "{{mediawiki_apache}}"
+    mode: 0755
+    owner: www-data
+    group: www-data
