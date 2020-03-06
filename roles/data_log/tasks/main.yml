@@ -26,7 +26,7 @@
 - name: Synchronise directory
   synchronize:
     src: /var/lib/mysql
-    dest: /appli/projects/wikidevops
+    dest: /appli/projects/wikidevops/
     perms: yes
     owner: yes
     group: yes
