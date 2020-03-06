@@ -27,15 +27,15 @@
 
 - name: Unarchive md3_01.00.00_data
   unarchive:
-    src: "{{mediawiki_LIVR1}}/{{item}}"
-    dest: "{{mediawiki_apache}}"
+    src: "{{mediawiki_LIVR1}}/{{item.source}}"
+    dest: "{{mediawiki_apache}}{{item.destination}}"
     mode: 0755
     owner: www-data
     group: www-data
     remote_src: yes
   loop:
-    - md3_01.00.00_data.tar
-    - dump_image.tar.gz
+    - { source: md3_01.00.00_data.tar, destination: "/" }
+    - { source: dump_image.tar.gz, destination: "/images" }
 
 - name: Install Mediawiki
   command: php "{{mediawiki_apache}}/md3_01.00.00_data/maintenance/install.php" --dbuser=mediawiki_admin --dbpass=mediawiki_passwd --dbname=mediawiki_db --dbserver=localhost --dbtype=mysql --scriptpath= --confpath=/appli/projects/wikidevops/apache/md3_01.00.00_data  --lang=fr --pass=password wikidevops admin
