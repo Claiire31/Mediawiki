@@ -25,19 +25,17 @@
     - Donnees.xml
     - dump_image.tar.gz
 
-- name: Copy Donnees.xml
-  copy:
-    src: "{{mediawiki_LIVR1}}/Donnees.xml"
-    dest: "{{mediawiki_LIVR1}}"
-
 - name: Unarchive md3_01.00.00_data
   unarchive:
-    src: "{{mediawiki_LIVR1}}/md3_01.00.00_data.tar"
+    src: "{{mediawiki_LIVR1}}/{{item}}"
     dest: "{{mediawiki_apache}}"
     mode: 0755
     owner: www-data
     group: www-data
     remote_src: yes
+  loop:
+    - md3_01.00.00_data.tar
+    - dump_image.tar.gz
 
 - name: Install Mediawiki
   command: php "{{mediawiki_apache}}/md3_01.00.00_data/maintenance/install.php" --dbuser=mediawiki_admin --dbpass=mediawiki_passwd --dbname=mediawiki_db --dbserver=localhost --dbtype=mysql --scriptpath= --confpath=/appli/projects/wikidevops/apache/md3_01.00.00_data  --lang=fr --pass=password wikidevops admin
@@ -47,15 +45,6 @@
 
 - name: Rebuild recent changes
   command: php "{{mediawiki_apache}}/md3_01.00.00_data/maintenance/rebuildrecentchanges.php"
-
-- name: Unarchive dump_image.tar.gz
-  unarchive:
-    src: Package_1/dump_image.tar.gz
-    dest: "{{mediawiki_apache}}/md3_01.00.00_data/"
-    mode: 0755
-    owner: www-data
-    group: www-data
-    remote_src: yes
 
 - name: Import images
   command: php "{{mediawiki_apache}}/md3_01.00.00_data/maintenance/importImages.php" "{{mediawiki_apache}}/md3_01.00.00_data/images"
