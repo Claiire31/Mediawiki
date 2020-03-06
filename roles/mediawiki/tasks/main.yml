@@ -33,6 +33,7 @@
     mode: 0755
     owner: www-data
     group: www-data
+    remote_src: yes
 
 - name: Install Mediawiki
   command: php "{{mediawiki_apache}}/md3_01.00.00_data/maintenance/install.php" --dbuser=mediawiki_admin --dbpass=mediawiki_passwd --dbname=mediawiki_db --dbserver=localhost --dbtype=mysql --scriptpath= --confpath=/appli/projects/wikidevops/apache/md3_01.00.00_data  --lang=fr --pass=password wikidevops admin
@@ -50,6 +51,7 @@
     mode: 0755
     owner: www-data
     group: www-data
+    remote_src: yes
 
 - name: Import images
   command: php "{{mediawiki_apache}}/md3_01.00.00_data/maintenance/importImages.php" "{{mediawiki_apache}}/md3_01.00.00_data/images"

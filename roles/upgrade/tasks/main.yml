@@ -12,6 +12,7 @@
     mode: 0755
     owner: www-data
     group: www-data
+    remote_src: yes
 
 - name: Unarchive Theme-REL1_34-b71d3ac
   unarchive:
@@ -20,6 +21,7 @@
     mode: 0755
     owner: www-data
     group: www-data
+    remote_src: yes
 
 - name: Unarchive LoGo.tar.gz
   unarchive:
@@ -28,6 +30,7 @@
     mode: 0755
     owner: www-data
     group: www-data
+    remote_src: yes
 
 - name: Import Localsettings.php
   copy:
