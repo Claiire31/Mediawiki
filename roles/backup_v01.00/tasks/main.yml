@@ -25,6 +25,6 @@
 
 - name: Archive mediawiki01.00.00
   archive:
-    src: "{{mediawiki_apache}}/md3_01.00.00_data"
+    path: "{{mediawiki_apache}}/md3_01.00.00_data"
     dest: "{{data_wiki}}"
     format: gz
