@@ -38,7 +38,7 @@
 
 - name: Import Localsettings.php
   copy:
-    src: Localsettings.php
+    src: LocalSettings.php
     dest: "{{mediawiki_apache}}/md3_01.01.00_data"
 
 - name: Update.php

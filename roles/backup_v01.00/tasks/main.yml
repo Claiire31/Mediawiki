@@ -19,7 +19,7 @@
 
 - name: Copy Localsettings.php
   copy:
-    src: "{{mediawiki_apache}}/md3_01.00.00_data/Localsettings.php"
+    src: "{{mediawiki_apache}}/md3_01.00.00_data/LocalSettings.php"
     dest: "{{data_wiki}}"
     remote_src: yes
 
