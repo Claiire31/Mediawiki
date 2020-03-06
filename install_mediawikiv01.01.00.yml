@@ -3,5 +3,5 @@
 - hosts: mediawiki
   roles:
     - { role: backup_v01.00, tags: backup_v01.00 }
-    - { role: php7, tags: backup_v01.00 }
-    - { role: upgrade, tags: backup_v01.00 }
+    - { role: php7, tags: php7 }
+    - { role: upgrade, tags: upgrade }
