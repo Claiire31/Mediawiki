@@ -24,7 +24,7 @@
   when: false
 
 - name: Synchronise directory
-  synchronise:
+  synchronize:
     src: /var/lib/mysql
     dest: /appli/projects/wikidevops
     perms: yes
