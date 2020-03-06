@@ -11,7 +11,7 @@
     state: stopped
   loop:
     - apache2
-    - "{{php_versionv1}}-fpm.service"
+    - "php{{php_versionv1}}-fpm.service"
 
 - name: Change UID www-data
   user:
@@ -29,4 +29,4 @@
     state: started
   loop:
     - apache2
-    - "{{php_versionv1}}-fpm.service"
+    - "php{{php_versionv1}}-fpm.service"
