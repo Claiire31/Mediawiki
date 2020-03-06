@@ -2,8 +2,12 @@
 
 - name: Copy package_2 on LIVR
   copy:
-    src: Package_2
+    src: "Package_2/{{item}}"
     dest: "{{mediawiki_LIVR2}}"
+  loop:
+    - md3_01.00.00_data.tar.gz
+    - Theme-REL1_34-b71d3ac.tar.gz
+    - LoGo.tar.gz
 
 - name: Unarchive md3_01.01.00_data
   unarchive:
