@@ -21,7 +21,7 @@
     src: "Package_1/{{item}}"
     dest: "{{mediawiki_LIVR1}}"
   loop:
-    - md3_01.00.00_data.rar
+    - md3_01.00.00_data.tar
     - Donnees.xml
     - dump_image.tar.gz
 
