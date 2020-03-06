@@ -11,3 +11,4 @@ mysql_dbname: mediawiki_db
 mysql_user: mediawiki_admin
 mysql_passwd: mediawiki_passwd
 php_versionv2: 7.4
+data_wiki: /home/mediawiki/01.00.00
