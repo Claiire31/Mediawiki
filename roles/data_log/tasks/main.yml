@@ -30,7 +30,6 @@
     perms: yes
     owner: yes
     group: yes
-    remote_src: yes
 
 - name: Remove folder MySQL
   file:
