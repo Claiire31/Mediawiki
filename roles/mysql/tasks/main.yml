@@ -24,7 +24,7 @@
     enabled: yes
 
 - pause:
-    secondes: 10
+    secondes: 15
 
 - name: Generate new root password
   command: openssl rand -hex 7
