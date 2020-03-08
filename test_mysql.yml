@@ -1,5 +1,5 @@
 ---
 
-- hosts: wordpress
+- hosts: mediawiki
   roles:
     - data_log
