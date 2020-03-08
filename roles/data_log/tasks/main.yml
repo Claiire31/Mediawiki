@@ -52,7 +52,12 @@
   copy:
     src: files/alias
     dest: /etc/apparmor.d/tunables/alias
-  notify: reload apparmor
+#♣  notify: reload apparmor
+
+- name: Reload apparmor
+  service:
+    name: apparmor
+    state: reloaded
 
 - name: Restart MySQL
   service:
