@@ -23,6 +23,9 @@
     name: mysql
     enabled: yes
 
+- pause:
+    secondes: 10
+
 - name: Generate new root password
   command: openssl rand -hex 7
   args:
