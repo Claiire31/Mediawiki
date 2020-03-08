@@ -12,6 +12,15 @@
 
 - name: Unarchive md3_01.01.00_data
   unarchive:
+    src: "{{mediawiki_LIVR2}}/md3_01.01.00_data.tar.gz"
+    dest: "{{mediawiki_apache}}"
+    mode: 0755
+    owner: www-data
+    group: www-data
+    remote_src: yes
+
+- name: Unarchive md3_01.01.00_data
+  unarchive:
     src: "{{mediawiki_LIVR2}}/{{item.source}}"
     dest: "{{mediawiki_apache}}/md3_01.01.00_data/{{item.destination}}"
     mode: 0755
@@ -19,7 +28,6 @@
     group: www-data
     remote_src: yes
   loop:
-    - { source: md3_01.01.00_data.tar.gz, destination: "/" }
     - { source: Theme-REL1_34-b71d3ac.tar.gz, destination: "/extensions/" }
     - { source: LoGo.tar.gz, destination: "/resources/assets/" }
     - { source: dump_image.tar.gz, destination: "/" }
