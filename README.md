@@ -1,1 +1,1 @@
-# Wordpress
+# Mediawiki
