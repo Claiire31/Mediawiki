@@ -30,7 +30,12 @@
   loop:
     - { source: Theme-REL1_34-b71d3ac.tar.gz, destination: "/extensions/" }
     - { source: LoGo.tar.gz, destination: "/resources/assets/" }
-    - { source: dump_image.tar.gz, destination: "/" }
+
+- name: Copy images on LIVR2
+  copy:
+    src: "{{mediawiki_LIVR1}}"
+    dest: "{{mediawiki_LIVR2}}"
+    remote_src: yes
 
 - name: Import Localsettings.php
   copy:
@@ -41,7 +46,7 @@
   command: php "{{mediawiki_apache}}/md3_01.01.00_data/maintenance/update.php"
 
 - name: Import images
-  command: php "{{mediawiki_apache}}/md3_01.01.00_data/maintenance/importImages.php" "{{mediawiki_apache}}/md3_01.01.00_data/images"
+  command: php "{{mediawiki_apache}}/md3_01.01.00_data/maintenance/importImages.php" "{{mediawiki_LIVR2}}"
 
 - name: Copy new file of mediawiki.conf
   copy:

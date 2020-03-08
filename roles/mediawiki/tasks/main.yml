@@ -37,7 +37,7 @@
 - name: Unarchive images
   unarchive:
     src: "{{mediawiki_LIVR1}}/dump_image.tar.gz"
-    dest: "{{mediawiki_apache}}/md3_01.00.00_data/"
+    dest: "{{mediawiki_LIVR1}}"
     mode: 0755
     owner: www-data
     group: www-data
@@ -56,4 +56,4 @@
   tags: install
 
 - name: Import images
-  command: php "{{mediawiki_apache}}/md3_01.00.00_data/maintenance/importImages.php" "{{mediawiki_apache}}/md3_01.00.00_data/images"
+  command: php "{{mediawiki_apache}}/md3_01.00.00_data/maintenance/importImages.php" "{{mediawiki_LIVR1}}"
