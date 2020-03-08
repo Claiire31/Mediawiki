@@ -1,5 +1,5 @@
 
-- name: Create directory and directory log MySQL
+- name: Create directory log MySQL
   file:
     path: "{{item}}"
     state: directory
@@ -47,14 +47,14 @@
     force: yes
 
 #apparmor
-- name: Copy file apparmor
-  copy:
-    src: files/usr.sbin.mysqld
-    dest: /etc/apparmor.d/usr.sbin.mysqld
-  notify: reload apparmor
 
 - name: Add alias Apparmor
   copy:
     src: files/alias
     dest: /etc/apparmor.d/tunables/alias
   notify: reload apparmor
+
+- name: Restart MySQL
+  service:
+    name: mysql
+    state: restarted

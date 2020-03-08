@@ -70,7 +70,7 @@ query_cache_size        = 16M
 #
 # Error log - should be very few entries.
 #
-log_error = /var/projects/wikidevops/log/mysql/error.log
+log_error = /var/log/mysql/error.log
 #
 # Here you can see queries with especially long duration
 #slow_query_log         = 1
