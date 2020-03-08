@@ -1,6 +1,6 @@
 ---
 
-- name: Fichier de site
+- name: File of site
   copy:
     src: mediawiki.conf
     dest: /etc/apache2/sites-available/
@@ -28,7 +28,7 @@
 - name: Unarchive md3_01.00.00_data
   unarchive:
     src: "{{mediawiki_LIVR1}}/{{item.source}}"
-    dest: "{{mediawiki_apache}}/md3_01.00.00_data/{{item.destination}}"
+    dest: "{{mediawiki_apache}}/{{item.destination}}"
     mode: 0755
     owner: www-data
     group: www-data
