@@ -1,5 +1,0 @@
----
-
-- hosts: mediawiki
-  roles:
-    - data_log
