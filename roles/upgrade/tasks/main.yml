@@ -8,6 +8,7 @@
     - md3_01.01.00_data.tar.gz
     - Theme-REL1_34-b71d3ac.tar.gz
     - LoGo.tar.gz
+    - dump_image.tar.gz
 
 - name: Unarchive md3_01.01.00_data
   unarchive:
@@ -21,6 +22,7 @@
     - { source: md3_01.01.00_data.tar.gz, destination: "/" }
     - { source: Theme-REL1_34-b71d3ac.tar.gz, destination: "/extensions/" }
     - { source: LoGo.tar.gz, destination: "/resources/assets/" }
+    - { source: dump_image.tar.gz, destination: "/" }
 
 - name: Import Localsettings.php
   copy:
