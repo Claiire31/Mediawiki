@@ -11,30 +11,16 @@
 
 - name: Unarchive md3_01.01.00_data
   unarchive:
-    src: "{{mediawiki_LIVR2}}/md3_01.01.00_data.tar.gz"
-    dest: "{{mediawiki_apache}}"
+    src: "{{mediawiki_LIVR2}}/{{item.source}}"
+    dest: "{{mediawiki_apache}}/md3_01.01.00_data/{{item.destination}}"
     mode: 0755
     owner: www-data
     group: www-data
     remote_src: yes
-
-- name: Unarchive Theme-REL1_34-b71d3ac
-  unarchive:
-    src: "{{mediawiki_LIVR2}}/Theme-REL1_34-b71d3ac.tar.gz"
-    dest: "{{mediawiki_apache}}/md3_01.01.00_data/extensions/"
-    mode: 0755
-    owner: www-data
-    group: www-data
-    remote_src: yes
-
-- name: Unarchive LoGo.tar.gz
-  unarchive:
-    src: "{{mediawiki_LIVR2}}/LoGo.tar.gz"
-    dest: "{{mediawiki_apache}}/md3_01.01.00_data/resources/assets/"
-    mode: 0755
-    owner: www-data
-    group: www-data
-    remote_src: yes
+  loop:
+    - { source: md3_01.01.00_data.tar.gz, destination: "/" }
+    - { source: Theme-REL1_34-b71d3ac.tar.gz, destination: "/extensions/" }
+    - { source: LoGo.tar.gz, destination: "/resources/assets/" }
 
 - name: Import Localsettings.php
   copy:
@@ -43,6 +29,11 @@
 
 - name: Update.php
   command: php "{{mediawiki_apache}}/md3_01.01.00_data/maintenance/update.php"
+
+- name: Copy new file of mediawiki.conf
+  copy:
+    src: mediawiki.conf
+    dest: /etc/apache2/sites-available/
 
 - name: Reload configuration apache
   service:
