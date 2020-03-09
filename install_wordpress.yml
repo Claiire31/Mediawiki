@@ -1,9 +1,0 @@
----
-
-- hosts: wordpress
-  roles:
-    - tools
-    - php
-    - nginx
-    - mysql
-    - wordpress
