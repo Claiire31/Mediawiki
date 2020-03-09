@@ -20,11 +20,17 @@
 - name: Copy Localsettings.php
   copy:
     src: "{{mediawiki_apache}}/md3_01.00.00_data/LocalSettings.php"
-    dest: "{{data_wiki}}"
+    dest: "{{data_wiki}}/wikiimages"
     remote_src: yes
 
 - name: Archive mediawiki01.00.00
   archive:
+    path: "{{mediawiki_apache}}/md3_01.00.00_data/images"
+    dest: "{{data_wiki}}/md3_01.00.00_data.tar.gz"
+    format: gz
+
+- name: Archive mediawiki01.00.00
+  archive:
     path: "{{mediawiki_apache}}/md3_01.00.00_data"
-    dest: "{{data_wiki}}/md3_01.00.00_data"
+    dest: "{{data_wiki}}/md3_01.00.00_data.tar.gz"
     format: gz
