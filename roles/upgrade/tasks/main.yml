@@ -36,6 +36,7 @@
     src: "{{data_wiki}}/wikiimages.tar.gz"
     dest: "{{mediawiki_LIVR2}}/md3_01.01.00_data/images"
     remote_src: yes
+  tags: importim
 
 - name: Import Localsettings.php
   copy:
@@ -52,7 +53,6 @@
   copy:
     src: mediawiki.conf
     dest: /etc/apache2/sites-available/
-  tags: confapache
 
 - name: Reload configuration apache
   service:
