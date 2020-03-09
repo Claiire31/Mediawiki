@@ -35,7 +35,6 @@
   mysql_db:
     name: test
     state: absent
-  when: mysql_new_root_pass.changed
 
 - name: Update root password
   mysql_user:
@@ -52,7 +51,6 @@
   template:
     src: my.cnf.j2
     dest: /root/.my.cnf
-  when: mysql_new_root_pass.changed
 
 - name: Create MySQL database
   mysql_db:
