@@ -52,7 +52,7 @@
   copy:
     src: mediawiki.conf
     dest: /etc/apache2/sites-available/
-  tags: apache
+  tags: confapache
 
 - name: Reload configuration apache
   service:
