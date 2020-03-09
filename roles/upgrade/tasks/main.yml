@@ -34,7 +34,7 @@
 - name: Import images
   unarchive:
     src: "{{data_wiki}}/wikiimages.tar.gz"
-    dest: "{{mediawiki_LIVR2}}/md3_01.01.00_data/images"
+    dest: "{{mediawiki_apache}}/md3_01.01.00_data/"
     remote_src: yes
   tags: importim
 
