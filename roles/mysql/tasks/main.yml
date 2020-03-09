@@ -70,7 +70,6 @@
   mysql_db:
     name: "{{mysql_dbname}}"
     state: present
-  notify: stop mysql
 
 - name: Create MySQL user
   mysql_user:
