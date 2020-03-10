@@ -27,3 +27,9 @@
   service:
     name: apache2
     state: reloaded
+
+- name: Restore database
+  mysql_db:
+    name: mediawiki_db
+    state: import
+    target: "{{data_wiki}}/backup.sql.gz"
