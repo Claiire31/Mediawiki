@@ -11,7 +11,7 @@
 
 - name: Unarchive images
   unarchive:
-    src: "{{data_wiki}}/dump_image.tar.gz"
+    src: "{{data_wiki}}/wikiimages.tar.gz"
     dest: "{{mediawiki_apache}}"
     mode: 0755
     owner: www-data
