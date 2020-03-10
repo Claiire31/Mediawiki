@@ -1,0 +1,29 @@
+---
+
+- name: Unarchive md3_01.00.00_data
+  unarchive:
+    src: "{{data_wiki}}/md3_01.00.00_data.tar.gz"
+    dest: "{{mediawiki_apache}}"
+    mode: 0755
+    owner: www-data
+    group: www-data
+    remote_src: yes
+
+- name: Unarchive images
+  unarchive:
+    src: "{{data_wiki}}/dump_image.tar.gz"
+    dest: "{{mediawiki_apache}}"
+    mode: 0755
+    owner: www-data
+    group: www-data
+    remote_src: yes
+
+- name: Import file site
+  copy:
+    src: mediawiki.conf
+    dest: /etc/apache2/sites-available/
+
+- name: Reload configuration apache
+  service:
+    name: apache2
+    state: reloaded

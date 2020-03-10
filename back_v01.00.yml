@@ -1,0 +1,6 @@
+---
+
+- hosts: mediawiki
+  roles:
+    - back_php
+    - going_back

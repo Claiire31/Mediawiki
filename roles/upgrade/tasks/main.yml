@@ -46,9 +46,6 @@
 - name: Update.php
   command: php "{{mediawiki_apache}}/md3_01.01.00_data/maintenance/update.php"
 
-#- name: Import images
-#  command: php "{{mediawiki_apache}}/md3_01.01.00_data/maintenance/importImages.php" "{{mediawiki_LIVR2}}"
-
 - name: Copy new file of mediawiki.conf
   copy:
     src: mediawiki.conf
